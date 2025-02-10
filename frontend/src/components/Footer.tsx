@@ -11,9 +11,13 @@ const Footer = () => {
           <div className="text-center md:text-left pb-2 md:pb-0">
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} All rights reserved by{" "}
-              <span className="font-semibold text-green-600">
-                Prerit Bhandari
-              </span>
+              <Link
+                target="_blank"
+                href={"https://snowtech.tech"}
+                className="font-semibold text-green-600"
+              >
+                Snowtech Innovations
+              </Link>
             </p>
           </div>
           <div className="flex items-center justify-center">
