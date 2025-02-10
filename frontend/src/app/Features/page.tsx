@@ -6,7 +6,8 @@ function Features() {
     <MaxWidthWrapper>
       <div className="text-center">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-          Why Choose SocialSkills AI?
+          Why Choose{" "}
+          <span className="text-green-500 underline">Socially.ai</span>?
         </h2>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Here's what makes it different:
