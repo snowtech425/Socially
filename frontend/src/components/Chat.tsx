@@ -6,6 +6,7 @@ import { ComponentRef, useRef } from "react";
 import React from "react";
 import StartCall from "./StartCall";
 import Controls from "./Controls";
+import { useSearchParams } from "next/navigation";
 
 export default function ClientComponent({
   accessToken,
@@ -15,13 +16,25 @@ export default function ClientComponent({
   const timeout = useRef<number | null>(null);
   const ref = useRef<ComponentRef<typeof Messages> | null>(null);
 
-  // optional: use configId from environment variable
-  const configId = process.env["NEXT_PUBLIC_HUME_CONFIG_ID"];
+  const searchParams = useSearchParams();
+  const title = searchParams.get("title");
+
+  // Map title values to corresponding config IDs
+  const configMap: Record<string, string | undefined> = {
+    barista: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_BARISTA,
+    date: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_DATE,
+    event_meetup: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_STRANGERMEETUP,
+    shared_workplace: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_SHAREDWORKPLACE,
+    approaching_stranger:
+      process.env.NEXT_PUBLIC_HUME_CONFIG_ID_APPROACHINGSTRANGER,
+  };
+
+  const configId = title ? configMap[title.toLowerCase()] : undefined;
 
   return (
     <div
       className={
-        "relative grow flex flex-col mx-auto w-full overflow-hidden h-[0px]"
+        "relative grow flex flex-col mx-auto w-full  h-[80vh] mb-10 z-20 "
       }
     >
       <VoiceProvider
