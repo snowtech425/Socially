@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import React from "react";
 
