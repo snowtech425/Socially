@@ -16,7 +16,7 @@ export default function MicFFT({
   return (
     <div className={"relative size-full"}>
       <AutoSizer>
-        {({ width, height }) => (
+        {({ width, height }: any) => (
           <motion.svg
             viewBox={`0 0 ${width} ${height}`}
             width={width}

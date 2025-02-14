@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { Renderable, Toast, ValueFunction, toast } from "react-hot-toast";
 import config from "../config";
 
 /**
@@ -13,8 +13,13 @@ const http = axios.create({
 });
 
 http.interceptors.response.use(
-  (response) => response,
-  (error) => {
+  (response: any) => response,
+  (error: {
+    response: {
+      status: number;
+      data: { message: Renderable | ValueFunction<Renderable, Toast> };
+    };
+  }) => {
     if (
       error.response.status === 400 ||
       error.response.status === 404 ||
