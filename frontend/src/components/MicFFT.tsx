@@ -3,6 +3,7 @@
 import { cn } from "../lib/utils";
 import { motion } from "framer-motion";
 import React from "react";
+// @ts-ignore
 import { AutoSizer } from "react-virtualized";
 
 export default function MicFFT({

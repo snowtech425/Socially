@@ -4,6 +4,7 @@ import { expressionLabels } from "../lib/expressionLabels";
 import { motion } from "framer-motion";
 import React from "react";
 import { CSSProperties } from "react";
+// @ts-ignore
 import * as R from "remeda";
 
 export default function Expressions({

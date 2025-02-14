@@ -7,10 +7,10 @@ const Chat = dynamic(() => import("../../components/Chat"), {
   ssr: false,
 });
 
-const client = new HumeClient(getHumeAccessToken);
+const client = new HumeClient(getHumeAccessToken as any);
 
 const socket = await client.empathicVoice.chat.connect({
-  configId: String(process.env.NEXT_PUBLIC_HUME_CONFIG_ID1),
+  configId: String(process.env.NEXT_PUBLIC_HUME_CONFIG_ID),
 });
 
 export default async function HumePage() {
