@@ -44,9 +44,9 @@ const Messages = forwardRef<
                   key={msg.type + index}
                   className={cn(
                     "w-[80%] my-2 p-4 shadow-lg rounded-lg",
-                    "bg-card border border-border",
+                    "bg-card border border-border dark:text-black",
                     msg.type === "user_message"
-                      ? "ml-auto bg-blue-50"
+                      ? "ml-auto bg-blue-50 dark:bg-yellow-50"
                       : "bg-green-50"
                   )}
                   initial={{ opacity: 0, y: 10 }}
