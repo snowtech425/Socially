@@ -43,16 +43,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <Card
               key={index}
               onClick={() => handleCardClick(item.title)}
-              className="cursor-pointer bg-gradient-to-br from-blue-100 via-green-100 to-pink-100 dark:from-green-800 dark:via-green-800 dark:to-green-800 rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
+              className="cursor-pointer bg-gradient-to-br from-blue-100 via-green-100 to-pink-100 dark:from-green-800 dark:via-green-800 dark:to-green-800 dark:text-white rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
             >
-              <CardContent className="h-fit">
-                <h3 className="text-md md:text-lg font-semibold mb-0 md:mb-2 flex items-center gap-x-3">
+              <CardContent className="h-fit p-0 md:p-3">
+                <p className="text-md md:text-lg font-semibold mb-0 md:mb-2 flex items-center gap-x-3 w-full ">
                   <span className={item.color}>{item.icon}</span>
-                  <span className="text-gray-900 dark:text-white">
+                  <span className=" text-gray-900 text-sm md:text-base dark:text-white break-all mb-2 md:mb-0 ">
                     {item.title}
                   </span>
-                </h3>
-                <p className=" md:flex text-sm text-gray-700 dark:text-gray-300 text-center">
+                </p>
+                <p className=" md:flex text-sm text-gray-700 dark:text-white text-center md:text-left">
                   {item.description}
                 </p>
               </CardContent>
