@@ -93,6 +93,7 @@ const Navbar = async () => {
             )}
             <ToggleDiplayMode />
           </div> */}
+          <ToggleDiplayMode />
         </div>
       </MaxWidthWrapper>
     </nav>
