@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(
     cors({
-      origin: ["http://localhost:3000", "https://your-frontend.vercel.app"], // Replace with your frontend URL
+      origin: ["http://localhost:3000", "https://sociallyai.vercel.app"], // Replace with your frontend URL
       methods: ["GET", "POST", "PUT", "DELETE"],
       allowedHeaders: ["Content-Type", "Authorization"],
       credentials: true, // Allow cookies if needed
