@@ -2,7 +2,7 @@
 import { cn } from "../lib/utils";
 import { useVoice } from "@humeai/voice-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ComponentRef, forwardRef } from "react";
+import { ComponentRef, forwardRef, useEffect, useState } from "react";
 import React from "react";
 import Expressions from "./Expressions";
 import { FaCoffee, FaRobot, FaUser } from "react-icons/fa";
@@ -13,9 +13,11 @@ const Messages = forwardRef<
   ComponentRef<typeof motion.div>,
   Record<never, never>
 >(function Messages(_, ref) {
-  const { messages } = useVoice();
+  const { messages, sendUserInput, readyState } = useVoice(); // Getting readyState from useVoice
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
+
+  const [isWebSocketReady, setIsWebSocketReady] = useState(false); // Track WebSocket readiness
 
   // Find the matching item in dummydata based on the title
   const matchedData = dummydata.find((item) => item.title === title);
@@ -23,6 +25,24 @@ const Messages = forwardRef<
   // Use the matched data or fallback to default values
   const name = matchedData ? matchedData.name : "AI Assistant";
   const icon = matchedData ? matchedData.icon : <FaRobot />; // Default icon if no match
+
+  // Log the readyState to monitor the connection status
+  useEffect(() => {
+    console.log("WebSocket readyState:", readyState);
+    if (readyState === "open") {
+      setIsWebSocketReady(true);
+    } else {
+      setIsWebSocketReady(false);
+    }
+  }, [readyState]);
+
+  // Trigger "Hello" once the WebSocket is ready
+  useEffect(() => {
+    if (isWebSocketReady && sendUserInput) {
+      console.log("Sending 'Hello' message...");
+      sendUserInput("Hello! Call me Ronak. I am Male");
+    }
+  }, [isWebSocketReady, sendUserInput]);
 
   return (
     <motion.div
@@ -40,47 +60,51 @@ const Messages = forwardRef<
               msg.type === "assistant_message"
             ) {
               return (
-                <motion.div
-                  key={msg.type + index}
-                  className={cn(
-                    "w-[80%] my-2 p-4 shadow-lg rounded-lg",
-                    "bg-card border border-border dark:text-black",
-                    msg.type === "user_message"
-                      ? "ml-auto bg-blue-50 dark:bg-yellow-50"
-                      : "bg-green-50"
-                  )}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 0 }}
-                >
-                  <div
+                index !== 2 && (
+                  <motion.div
+                    key={msg.type + index}
                     className={cn(
-                      "flex items-center text-xs font-medium leading-none opacity-50 mb-2"
+                      "w-[80%] my-2 p-4 shadow-lg rounded-lg",
+                      "bg-card border border-border dark:text-black",
+                      msg.type === "user_message"
+                        ? "ml-auto bg-blue-50 dark:bg-yellow-50"
+                        : "bg-green-50"
                     )}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 0 }}
                   >
-                    {msg.type === "assistant_message" && (
-                      <div className={`mr-2 ${matchedData?.color}`}>{icon}</div>
-                    )}
-                    <span className="capitalize">
-                      {msg.type === "assistant_message" ? (
-                        name
-                      ) : (
-                        <div
-                          className={`mr-2 flex gap-x-1 ${matchedData?.color}`}
-                        >
-                          <span>
-                            <FaUser />
-                          </span>
-                          &nbsp; <span>Me</span>
+                    <div
+                      className={cn(
+                        "flex items-center text-xs font-medium leading-none opacity-50 mb-2"
+                      )}
+                    >
+                      {msg.type === "assistant_message" && (
+                        <div className={`mr-2 ${matchedData?.color}`}>
+                          {icon}
                         </div>
                       )}
-                    </span>
-                  </div>
-                  <div className="text-sm text-gray-800">
-                    {msg.message.content}
-                  </div>
-                  <Expressions values={{ ...msg.models.prosody?.scores }} />
-                </motion.div>
+                      <span className="capitalize">
+                        {msg.type === "assistant_message" ? (
+                          name
+                        ) : (
+                          <div
+                            className={`mr-2 flex gap-x-1 ${matchedData?.color}`}
+                          >
+                            <span>
+                              <FaUser />
+                            </span>
+                            &nbsp; <span>Me</span>
+                          </div>
+                        )}
+                      </span>
+                    </div>
+                    <div className="text-sm text-gray-800">
+                      {msg.message.content}
+                    </div>
+                    <Expressions values={{ ...msg.models.prosody?.scores }} />
+                  </motion.div>
+                )
               );
             }
 
