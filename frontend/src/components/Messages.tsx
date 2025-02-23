@@ -3,6 +3,7 @@ import { cn } from "../lib/utils";
 import { useVoice } from "@humeai/voice-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ComponentRef, forwardRef, useEffect, useState } from "react";
+
 import React from "react";
 import Expressions from "./Expressions";
 import { FaCoffee, FaRobot, FaUser } from "react-icons/fa";
@@ -120,5 +121,6 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
     );
   }
 );
+
 
 export default Messages;

@@ -31,6 +31,7 @@ export default function ClientComponent({
 
   const configId = title ? configMap[title.toLowerCase()] : undefined;
 
+
   // State for user input
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -130,6 +131,7 @@ export default function ClientComponent({
           }, 200);
         }}
       >
+
         <Messages ref={ref} username={name} gender={gender} />
         <Controls setShowBox={setShowBox} />
         {name && email && gender && <StartCall setShowBox={setShowBox} />}

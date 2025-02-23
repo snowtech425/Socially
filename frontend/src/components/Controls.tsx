@@ -8,7 +8,9 @@ import React from "react";
 import { Toggle } from "./ui/toggle";
 import MicFFT from "./MicFFT";
 
+
 export default function Controls({ setShowBox }: any) {
+
   const { disconnect, status, isMuted, unmute, mute, micFft } = useVoice();
 
   return (
@@ -62,7 +64,9 @@ export default function Controls({ setShowBox }: any) {
               className={"flex items-center gap-1"}
               onClick={() => {
                 disconnect();
+
                 setShowBox(true);
+
               }}
               variant={"destructive"}
             >
