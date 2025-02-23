@@ -31,7 +31,6 @@ app.post("/add-data", async (req, res) => {
         if (!age) {
             age= ''
         }
-
         // Append data to Google Sheets
         await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
