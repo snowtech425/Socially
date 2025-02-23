@@ -2,7 +2,7 @@
  * Application wide configuration.
  */
 const config = {
-  enableMock: process.env.REACT_APP_ENABLE_MOCK === "true",
+  // enableMock: process.env.REACT_APP_ENABLE_MOCK === "true",
   // firebaseConfig: {
   //   apiKey: process.env.REACT_APP_GOOGLE_AUTH_API_KEY,
   //   authDomain: process.env.REACT_APP_GOOGLE_AUTH_AUTH_DOMAIN,
@@ -11,7 +11,7 @@ const config = {
   //   messagingSenderId: process.env.REACT_APP_GOOGLE_AUTH_MESSAGING_SENDER_ID,
   //   appId: process.env.REACT_APP_GOOGLE_AUTH_APP_ID,
   // },
-  apiUrl: process.env.REACT_APP_API_URL,
+  apiUrl: process.env.NEXT_PUBLIC_API_URL,
   endpoints: {
     auth: {
       login: "api/auth/signin",
@@ -19,6 +19,10 @@ const config = {
       refresh: "/auth/refresh",
       verify: "/auth",
       current: "/auth/get",
+    },
+
+    user: {
+      add_data: "/add-data",
     },
   },
 };

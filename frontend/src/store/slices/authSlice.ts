@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 import { auth, signIn, signOut } from "@/auth";
+import Agent from "../agent";
 
 interface AuthState {
   loading: boolean;
   user: Record<string, any>;
+  user_data: Record<string, any>;
   errors: Record<string, any>;
   redirectTo: string | null;
 }
@@ -12,6 +14,7 @@ interface AuthState {
 const initialState: AuthState = {
   loading: false,
   user: {},
+  user_data: {},
   errors: {},
   redirectTo: null,
 };
@@ -61,6 +64,32 @@ export const getUser = createAsyncThunk("/", async (_, { rejectWithValue }) => {
     return rejectWithValue({ errors: { [err.name]: err.message } });
   }
 });
+
+export const addUserToSpreadsheet: any = createAsyncThunk(
+  "auth/add_user",
+  async (
+    data: {
+      name: string;
+      email: string;
+      gender: string;
+      age: number;
+      scenario: string;
+    },
+    { rejectWithValue }
+  ) => {
+    try {
+      const res = await Agent.User.add_data({
+        name: data.name,
+        email: data.email,
+        gender: data.gender,
+        scenario: data.scenario,
+        age: data.age,
+      });
+    } catch (err: any) {
+      return rejectWithValue({ errors: { [err.name]: err.message } });
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -114,6 +143,19 @@ const authSlice = createSlice({
         // state.redirectTo = "/";
       })
       .addCase(getUser.rejected, (state, action: any) => {
+        state.loading = false;
+        state.errors = action.payload?.errors || {};
+      })
+
+      .addCase(addUserToSpreadsheet.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addUserToSpreadsheet.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user_data = action.payload || {};
+        // state.redirectTo = "/auth";
+      })
+      .addCase(addUserToSpreadsheet.rejected, (state, action: any) => {
         state.loading = false;
         state.errors = action.payload?.errors || {};
       });

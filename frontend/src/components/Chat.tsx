@@ -7,6 +7,15 @@ import React from "react";
 import StartCall from "./StartCall";
 import Controls from "./Controls";
 import { useSearchParams } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export default function ClientComponent({
   accessToken,
@@ -20,24 +29,42 @@ export default function ClientComponent({
   const title = searchParams.get("title");
 
   // Map title values to corresponding config IDs
-  const configMap: Record<string, string | undefined> = {
-    barista: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_BARISTA,
-    date: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_DATE,
-    event_meetup: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_STRANGERMEETUP,
-    shared_workplace: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_SHAREDWORKPLACE,
-    approaching_stranger:
-      process.env.NEXT_PUBLIC_HUME_CONFIG_ID_APPROACHINGSTRANGER,
+  const configMap: Record<
+    string,
+    { male: string | undefined; female: string | undefined }
+  > = {
+    barista: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_BARISTA,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_BARISTA,
+    },
+    date: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_DATE,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_DATE,
+    },
+    event_meetup: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_STRANGERMEETUP,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_STRANGERMEETUP,
+    },
+    shared_workplace: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_SHAREDWORKPLACE,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_SHAREDWORKPLACE,
+    },
+    approaching_stranger: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_APPROACHINGSTRANGER,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_APPROACHINGSTRANGER,
+    },
   };
-
-  const configId = title ? configMap[title.toLowerCase()] : undefined;
-
 
   // State for user input
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [age, setAge] = useState<number | "">(""); // Age input field
-  const [gender, setGender] = useState<"male" | "female">("male");
+  const [gender, setGender] = useState<"male" | "female">();
+  const [AIGender, setAIGender] = useState<"male" | "female">();
   const [showBox, setShowBox] = useState(true);
+
+  const configId =
+    title && AIGender ? configMap[title.toLowerCase()]?.[AIGender] : undefined;
 
   // Handle name, email, and age change
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +82,10 @@ export default function ClientComponent({
   // Handle gender selection
   const handleGenderChange = (selectedGender: "male" | "female") => {
     setGender(selectedGender);
+  };
+
+  const handleAIGenderChange = (selectedGender: "male" | "female") => {
+    setAIGender(selectedGender);
   };
 
   return (
@@ -89,23 +120,30 @@ export default function ClientComponent({
               min="0"
             />
 
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => handleGenderChange("male")}
-                className={`px-4 py-2 rounded-md transition-colors ${
-                  gender === "male" ? "bg-blue-500 text-white" : "bg-gray-200"
-                } hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500`}
-              >
-                Male
-              </button>
-              <button
-                onClick={() => handleGenderChange("female")}
-                className={`px-4 py-2 rounded-md transition-colors ${
-                  gender === "female" ? "bg-pink-500 text-white" : "bg-gray-200"
-                } hover:bg-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500`}
-              >
-                Female
-              </button>
+            <div className="flex flex-row gap-x-5 gap-y-2">
+              <Select value={gender} onValueChange={handleGenderChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select your gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+
+              <Select value={AIGender} onValueChange={handleAIGenderChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select  AI gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -131,10 +169,23 @@ export default function ClientComponent({
           }, 200);
         }}
       >
-
-        <Messages ref={ref} username={name} gender={gender} />
+        <Messages
+          ref={ref}
+          username={name}
+          gender={gender}
+          AIGender={AIGender}
+        />
         <Controls setShowBox={setShowBox} />
-        {name && email && gender && <StartCall setShowBox={setShowBox} />}
+        {name && email && gender && AIGender && (
+          <StartCall
+            name={name}
+            email={email}
+            gender={gender}
+            scenario={title}
+            age={age}
+            setShowBox={setShowBox}
+          />
+        )}
       </VoiceProvider>
     </div>
   );

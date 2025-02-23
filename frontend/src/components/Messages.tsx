@@ -13,11 +13,12 @@ import dummydata from "./dummyDatas/dummydata";
 // Define props type for the Messages component
 interface MessagesProps {
   username: string;
-  gender: "male" | "female";
+  gender: "male" | "female" | undefined;
+  AIGender: "male" | "female" | undefined;
 }
 
 const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
-  function Messages({ username, gender }, ref) {
+  function Messages({ username, gender, AIGender }, ref) {
     const { messages, sendUserInput, readyState } = useVoice(); // Getting readyState from useVoice
     const searchParams = useSearchParams();
     const title = searchParams.get("title");
@@ -28,7 +29,11 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
     const matchedData = dummydata.find((item) => item.title === title);
 
     // Use the matched data or fallback to default values
-    const name = matchedData ? matchedData.name : "AI Assistant";
+    const name = matchedData
+      ? AIGender === "male"
+        ? matchedData.boy_name
+        : matchedData.girl_name
+      : "AI Assistant";
     const icon = matchedData ? matchedData.icon : <FaRobot />; // Default icon if no match
 
     // Log the readyState to monitor the connection status
@@ -121,6 +126,5 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
     );
   }
 );
-
 
 export default Messages;
