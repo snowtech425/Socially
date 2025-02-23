@@ -14,7 +14,7 @@ import dummydata from "./dummyDatas/dummydata";
 interface MessagesProps {
   username: string;
   gender: "male" | "female" | undefined;
-  AiGender: "male" | "female" | undefined;
+  AIGender: "male" | "female" | undefined;
 }
 
 const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(

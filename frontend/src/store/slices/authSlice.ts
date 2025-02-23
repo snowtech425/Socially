@@ -82,8 +82,8 @@ export const addUserToSpreadsheet: any = createAsyncThunk(
         name: data.name,
         email: data.email,
         gender: data.gender,
-        age: data.age,
         scenario: data.scenario,
+        age: data.age,
       });
     } catch (err: any) {
       return rejectWithValue({ errors: { [err.name]: err.message } });
