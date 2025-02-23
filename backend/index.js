@@ -22,10 +22,10 @@ const HUME_API_KEY = process.env.HUME_API_KEY;
 // Route to post data to Google Spreadsheet
 app.post("/add-data", async (req, res) => {
     try {
-        const { name, email, gender, age } = req.body; // Expecting JSON input
+        const { name, email, gender, scenario, age } = req.body; // Expecting JSON input
 
         // Validate input
-        if (!name || !email || !gender || !age) {
+        if (!name || !email || !gender || !scenario || !age) {
             return res.status(400).json({ error: "Missing required fields" });
         }
 
@@ -34,7 +34,7 @@ app.post("/add-data", async (req, res) => {
             spreadsheetId: SPREADSHEET_ID,
             range: "Sheet1!A1", // Adjust based on your sheet structure
             valueInputOption: "RAW",
-            resource: { values: [[name, email, gender, age]] },
+            resource: { values: [[name, email, gender, age, scenario]] },
         });
 
         res.json({ message: "Data added successfully" });
