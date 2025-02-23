@@ -44,8 +44,11 @@ const HUME_API_KEY = process.env.HUME_API_KEY;
 
 // Route to post data to Google Spreadsheet
 app.post("/add-data", async (req, res) => {
-    try {
-        const { name, email, gender, scenario, age } = req.body; // Expecting JSON input
+    try {   
+
+        const { name, email, gender, scenario } = req.body; // Expecting JSON input
+
+        let {age} = req.body
 
         // Validate input
         if (!name || !email || !gender || !scenario ) {
