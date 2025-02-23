@@ -3,13 +3,34 @@ const express = require("express");
 const { google } = require("googleapis");
 const axios = require("axios");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
-app.use(express.json());
+app.use(cors());
+
+app.use(
+    cors({
+      origin: ["http://localhost:3000", "https://your-frontend.vercel.app"], // Replace with your frontend URL
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true, // Allow cookies if needed
+    })
+  );
 
 // Load Google service account credentials
 const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_CREDENTIALS, // Path to service account key file
+    credentials: {
+        type: "service_account",
+        project_id: process.env.GOOGLE_PROJECT_ID,
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Fix newlines
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        client_id: process.env.GOOGLE_CLIENT_ID,
+        auth_uri: process.env.GOOGLE_AUTH_URI,
+        token_uri: process.env.GOOGLE_TOKEN_URI,
+        auth_provider_x509_cert_url: process.env.GOOGLE_AUTH_PROVIDER_CERT,
+        client_x509_cert_url: process.env.GOOGLE_CLIENT_CERT,
+        universe_domain: process.env.GOOGLE_UNIVERSE_DOMAIN,
+    },
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
