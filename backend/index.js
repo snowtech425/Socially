@@ -25,8 +25,11 @@ app.post("/add-data", async (req, res) => {
         const { name, email, gender, scenario, age } = req.body; // Expecting JSON input
 
         // Validate input
-        if (!name || !email || !gender || !scenario || !age) {
+        if (!name || !email || !gender || !scenario ) {
             return res.status(400).json({ error: "Missing required fields" });
+        }
+        if (!age) {
+            age= ''
         }
 
         // Append data to Google Sheets
