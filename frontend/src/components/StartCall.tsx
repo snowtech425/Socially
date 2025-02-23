@@ -1,12 +1,22 @@
+"use client";
 import { useVoice } from "@humeai/voice-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addUserToSpreadsheet } from "@/store/slices/authSlice";
 
-export default function StartCall({ setShowBox }: any) {
+export default function StartCall({
+  name,
+  email,
+  gender,
+  scenario,
+  age,
+  setShowBox,
+}: any) {
   const { status, connect } = useVoice();
-
+  const dispatch = useDispatch();
   return (
     <AnimatePresence>
       <div className="m-auto pt-10">
@@ -42,7 +52,18 @@ export default function StartCall({ setShowBox }: any) {
                     onClick={() => {
                       setShowBox(false);
                       connect()
-                        .then(() => console.log("Connected"))
+                        .then(() => {
+                          console.log("Connected");
+                          dispatch(
+                            addUserToSpreadsheet({
+                              name,
+                              email,
+                              gender,
+                              scenario,
+                              age,
+                            })
+                          );
+                        })
                         .catch((error) =>
                           console.error("Connection failed:", error)
                         );

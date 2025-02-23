@@ -17,8 +17,14 @@ const Auth = {
     requests.post("/users", { user: { username, email, password } }),
 };
 
+const User = {
+  add_data: (payload: any) =>
+    requests.post(config.endpoints.user.add_data, payload),
+};
+
 const Agent = {
   Auth,
+  User,
   // setToken: _token => { token = _token; }
 };
 
