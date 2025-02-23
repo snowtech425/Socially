@@ -24,7 +24,7 @@ const auth = new google.auth.GoogleAuth({
   credentials: {
     type: "service_account",
     project_id: process.env.GOOGLE_PROJECT_ID,
-    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"), // Fix newlines
+    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n").trim(), // Fix newlines
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
     client_id: process.env.GOOGLE_CLIENT_ID,
     auth_uri: process.env.GOOGLE_AUTH_URI,
@@ -44,12 +44,10 @@ const HUME_API_KEY = process.env.HUME_API_KEY;
 
 // Route to post data to Google Spreadsheet
 app.post("/add-data", async (req, res) => {
+  try {
+    const { name, email, gender, scenario } = req.body; // Expecting JSON input
 
-    try {   
-
-        const { name, email, gender, scenario } = req.body; // Expecting JSON input
-
-        let {age} = req.body
+    let { age } = req.body;
 
     // Validate input
     if (!name || !email || !gender || !scenario) {
