@@ -3,9 +3,19 @@ const express = require("express");
 const { google } = require("googleapis");
 const axios = require("axios");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
-app.use(express.json());
+app.use(cors());
+
+app.use(
+    cors({
+      origin: ["http://localhost:3000", "https://your-frontend.vercel.app"], // Replace with your frontend URL
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true, // Allow cookies if needed
+    })
+  );
 
 // Load Google service account credentials
 const auth = new google.auth.GoogleAuth({
