@@ -13,10 +13,10 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} All rights reserved by{" "}
               <Link
                 target="_blank"
-                href={"https://snowtech.tech"}
+                href={"/"}
                 className="font-semibold text-green-600"
               >
-                Snowtech Innovations
+                Socially.ai
               </Link>
             </p>
           </div>

@@ -1,78 +1,80 @@
-import dotenv from 'dotenv';
-import { fetchAccessToken } from 'hume';
-import { VoiceClient } from '@humeai/voice';
+require("dotenv").config();
+const express = require("express");
+const { google } = require("googleapis");
+const axios = require("axios");
+const fs = require("fs");
 
-dotenv.config(); // Make sure environment variables are loaded
-
-import WebSocket from 'ws';
-
-import express from 'express';
 const app = express();
+app.use(express.json());
 
-// const ws = new WebSocket('wss://api.hume.ai/v0/voice');
-
-// ws.on('open', () => console.log('✅ WebSocket Connected'));
-// ws.on('message', (message) => console.log('📩 Received:', message));
-// ws.on('close', () => console.log('❌ WebSocket Closed'));
-// ws.on('error', (error) => console.error('⚠️ WebSocket Error:', error));
-
-import router from './routes/humeRoutes.js';
-
-app.use('/api', router);
-
-app.listen(3000, () => {
-  console.log(`Server is running at http://localhost:${3000}`);
+// Load Google service account credentials
+const auth = new google.auth.GoogleAuth({
+    keyFile: process.env.GOOGLE_CREDENTIALS, // Path to service account key file
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-// async function testAuth() {
-//   try {
-//     const accessToken = await fetchAccessToken({
-//       apiKey: process.env.HUME_API_KEY,
-//       secretKey: process.env.HUME_CLIENT_SECRET,
-//     });
+const sheets = google.sheets({ version: "v4", auth });
 
-//     console.log("Access Token:", accessToken);
-//   } catch (error) {
-//     console.error("Error fetching access token:", error);
-//   }
-// }
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID; // Your Google Sheet ID
+const HUME_API_URL = "https://api.hume.ai/v0/evi/configs"; // API to be patched
+const HUME_API_KEY = process.env.HUME_API_KEY;
 
-// testAuth();
+// Route to post data to Google Spreadsheet
+app.post("/add-data", async (req, res) => {
+    try {
+        const { values } = req.body; // Expecting an array of values
+        console.log(values)
+        if (!Array.isArray(values)) return res.status(400).json({ error: "Invalid data format" });
 
-// async function initializeVoiceClient() {
-//   const accessToken = await fetchAccessToken({
-//     apiKey: process.env.HUME_API_KEY,
-//     secretKey: process.env.HUME_CLIENT_SECRET,
-//   });
+        await sheets.spreadsheets.values.append({
+            spreadsheetId: SPREADSHEET_ID,
+            range: "Sheet1!A1", // Adjust as needed
+            valueInputOption: "RAW",
+            resource: { values: [values] },
+        });
 
-//   if (!accessToken) {
-//     throw new Error('Failed to obtain access token');
-//   }
+        res.json({ message: "Data added successfully" });
+    } catch (error) {
+        console.log("asasdasd")
+        console.error(error);
+        res.status(500).json({ error: "Error adding data" });
+    }
+});
 
-//   const client = new VoiceClient({
-//     auth: { type: 'accessToken', value: accessToken },
-//   });
+// Route to patch another API
+app.patch("/update-hume", async (req, res) => {
+    try {
+        const { configId, version, Description } = req.body;
+        if (!configId || !version || !Description) {
+            return res.status(400).json({ error: "Missing required parameters" });
+        }
+        trimmedDescription = Description.substring(0, 256);
+        const payload = {
+            prompt: {
+                text: trimmedDescription
+            }
+        };
+        
+        console.log(req.body)
+        const response = await axios.patch(
+            `${HUME_API_URL}/${configId}/version/${version}`,
+            { 
+                // version_description: trimmedDescription,
+                payload
+            },
+            {
+                headers: {
+                    "X-Hume-Api-Key": HUME_API_KEY,
+                    "Content-Type": "application/json"
+                },
+            }
+        );
 
-//   client.on('open', () => {
-//     console.log('WebSocket connection established');
-//     // Start streaming audio data
-//   });
-
-//   client.on('message', (message) => {
-//     console.log('Received message:', message);
-//     // Handle EVI's response
-//   });
-
-//   client.on('close', () => {
-//     console.log('WebSocket connection closed');
-//   });
-
-//   client.on('error', (error) => {
-//     console.error('WebSocket error:', error);
-//   });
-
-//   client.connect();
-// }
-
-// // Initialize the voice client
-// initializeVoiceClient();
+        res.json({ message: "Hume API updated successfully", data: response.data });
+    } catch (error) {
+        console.error(error.response?.data || error.message);
+        res.status(500).json({ error: "Error updating Hume API", details: error.response?.data });
+    }
+});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

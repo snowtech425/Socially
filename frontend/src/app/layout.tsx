@@ -10,8 +10,8 @@ import { ReduxProvider } from "@/store/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Boilerplate APP",
-  description: "Created with love by Prerit",
+  title: "Socially",
+  description: "Created with love by Snowtech Innovations",
 };
 
 export default function RootLayout({

@@ -25,7 +25,7 @@ export default async function Home() {
       <section className="bg-white ">
         <ScienceAndPractice />
       </section>
-      {/* CTA Section */}ly
+      {/* CTA Section */}
       <section className="bg-green-600 py-24">
         <CTA />
       </section>
