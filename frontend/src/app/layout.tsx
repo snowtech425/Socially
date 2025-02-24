@@ -22,6 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <script
+          type="module"
+          defer
+          src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/spiral.js"
+        ></script>
         <SessionAuthProvider>
           <ReduxProvider>
             <ThemeProvider
