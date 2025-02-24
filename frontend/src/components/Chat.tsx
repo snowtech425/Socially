@@ -62,6 +62,7 @@ export default function ClientComponent({
   const [gender, setGender] = useState<"male" | "female">();
   const [AIGender, setAIGender] = useState<"male" | "female">();
   const [showBox, setShowBox] = useState(true);
+  const [consentGiven, setConsentGiven] = useState(false); // Consent state
 
   const configId =
     title && AIGender ? configMap[title.toLowerCase()]?.[AIGender] : undefined;
@@ -88,17 +89,21 @@ export default function ClientComponent({
     setAIGender(selectedGender);
   };
 
+  const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConsentGiven(e.target.checked); // Update consent state
+  };
+
   return (
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20 ">
       {/* Name, Email, Age, and Gender Section */}
       {showBox && (
-        <div className="mt-4 p-2 md:p-6 border rounded-md bg-gray-100 z-30 w-[95%] md:w-1/2 xl:w-1/3 m-auto shadow-lg transition-all duration-300">
+        <div className="mt-4 p-2 md:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 w-[95%] md:w-1/2 xl:w-1/3 m-auto shadow-lg transition-all duration-300">
           <div className="flex flex-col gap-2 md:gap-6">
             <input
               type="text"
               value={name}
               onChange={handleNameChange}
-              className="p-2 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your name"
             />
 
@@ -106,7 +111,7 @@ export default function ClientComponent({
               type="email"
               value={email}
               onChange={handleEmailChange}
-              className="p-2 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
             />
 
@@ -115,7 +120,7 @@ export default function ClientComponent({
               required={false}
               value={age || ""}
               onChange={handleAgeChange}
-              className="p-2 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your age (Optional)"
               min="0"
             />
@@ -144,6 +149,20 @@ export default function ClientComponent({
                   </SelectGroup>
                 </SelectContent>
               </Select>
+            </div>
+            {/* Consent Checkbox */}
+            <div className="flex items-center gap-2 mt-1">
+              <input
+                type="checkbox"
+                id="consent"
+                checked={consentGiven}
+                onChange={handleConsentChange}
+                className="h-4 w-4 border rounded-md"
+              />
+              <label htmlFor="consent" className="text-xs md:text-sm">
+                Yes, I consent to share my data with Socially.ai for improvement
+                purpose
+              </label>
             </div>
           </div>
         </div>
@@ -176,7 +195,7 @@ export default function ClientComponent({
           AIGender={AIGender}
         />
         <Controls setShowBox={setShowBox} />
-        {name && email && gender && AIGender && (
+        {name && email && gender && AIGender && consentGiven && (
           <StartCall
             name={name}
             email={email}
