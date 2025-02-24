@@ -19,14 +19,15 @@ app.use(
   })
 );
 
+const pemKey = process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join("\n");
+// Replacing \n escape sequences with actual newlines
+
 // Load Google service account credentials
 const auth = new google.auth.GoogleAuth({
   credentials: {
     type: "service_account",
     project_id: process.env.GOOGLE_PROJECT_ID,
-    private_key: process.env.GOOGLE_PRIVATE_KEY.split(String.raw`\n`).join(
-      "\n"
-    ),
+    private_key: pemKey,
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
     client_id: process.env.GOOGLE_CLIENT_ID,
     auth_uri: process.env.GOOGLE_AUTH_URI,
@@ -80,7 +81,7 @@ app.patch("/update-hume", async (req, res) => {
     if (!configId || !version || !Description) {
       return res.status(400).json({ error: "Missing required parameters" });
     }
-    trimmedDescription = Description.substring(0, 256);
+    const trimmedDescription = Description.substring(0, 256);
     const payload = {
       prompt: {
         text: trimmedDescription,

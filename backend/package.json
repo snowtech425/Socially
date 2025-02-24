@@ -10,7 +10,7 @@
     "googleapis": "^144.0.0",
     "hume": "^0.9.10"
   },
-  "engines": {
-    "node": "22.x"
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
