@@ -92,7 +92,7 @@ export default function ClientComponent({
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20 ">
       {/* Name, Email, Age, and Gender Section */}
       {showBox && (
-        <div className="mt-4 p-2 md:p-6 border rounded-md bg-gray-100 z-30 w-[95%] md:w-1/2 xl:w-1/3 m-auto shadow-lg transition-all duration-300">
+        <div className="mt-4 p-2 md:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 w-[95%] md:w-1/2 xl:w-1/3 m-auto shadow-lg transition-all duration-300">
           <div className="flex flex-col gap-2 md:gap-6">
             <input
               type="text"
