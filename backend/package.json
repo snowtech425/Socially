@@ -9,5 +9,8 @@
     "express": "^4.21.2",
     "googleapis": "^144.0.0",
     "hume": "^0.9.10"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
