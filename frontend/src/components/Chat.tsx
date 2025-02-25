@@ -97,23 +97,25 @@ export default function ClientComponent({
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20 ">
       {/* Name, Email, Age, and Gender Section */}
       {showBox && (
-        <div className="mt-4 p-2 md:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 w-[95%] md:w-1/2 xl:w-1/3 m-auto shadow-lg transition-all duration-300">
-          <div className="flex flex-col gap-2 md:gap-6">
-            <input
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your name"
-            />
+        <div className="mt-4 p-2 md:p-6 xl:p-3 2xl:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 h-auto  xl:h-auto 2xl:h-auto xl:w-6/12 w-[95%] md:w-1/2 2xl:w-1/3 m-auto shadow-lg transition-all duration-300">
+          <div className="flex flex-col gap-2 md:gap-6 xl:gap-y-4 2xl:gap-y-6">
+            <div className="flex flex-col xl:flex-row 2xl:flex-col xl:justify-between xl:w-6/6 gap-y-2 xl:gap-y-0 2xl:gap-y-6">
+              <input
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 xl:w-3/6 2xl:w-full xl:mr-5 2xl:mr-0"
+                placeholder="Enter your name"
+              />
 
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
-            />
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 xl:w-3/6 2xl:w-full"
+                placeholder="Enter your email"
+              />
+            </div>
 
             <input
               type="number"
