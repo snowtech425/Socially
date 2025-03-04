@@ -1,7 +1,14 @@
+"use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import React from "react";
+import React, { useState } from "react";
+import Modal from "@/components/Modal";
 
 function CTA() {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen((prev) => !prev);
+  };
   return (
     <MaxWidthWrapper>
       <div className="text-center">
@@ -11,10 +18,14 @@ function CTA() {
         <p className="mt-4 text-lg text-green-100">
           Try SocialSkills AI free for 7 days. No credit card needed.
         </p>
-        <button className="mt-8 px-8 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors">
+        <button
+          onClick={handleModalToggle}
+          className="mt-8 px-8 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors"
+        >
           Start Practicing Now
         </button>
       </div>
+      <Modal isOpen={isModalOpen} onClose={handleModalToggle} />
     </MaxWidthWrapper>
   );
 }

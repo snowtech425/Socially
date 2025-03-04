@@ -10,7 +10,8 @@ const dummydata = [
     color: "text-red-500",
     girl_name: "Sarah",
     boy_name: "Srijan",
-    description: "Make your Date Perfect Before your Actual Date",
+    description:
+      "Master your date skills by practicing engaging conversation and handling tricky moments with ease.",
   },
   {
     title: "Barista",
@@ -19,7 +20,7 @@ const dummydata = [
     girl_name: "Sangita",
     boy_name: "Suman",
     description:
-      "Breaking out of robotic interactions and making light, natural conversation.",
+      "Turn small talk into meaningful exchanges and make every café interaction feel natural and fun.",
   },
   {
     title: "Approaching_stranger",
@@ -28,7 +29,7 @@ const dummydata = [
     boy_name: "Abhishek",
     girl_name: "Simran",
     description:
-      "Overcoming approach anxiety, reading social cues, and handling polite rejections.",
+      "Build confidence in meeting new people, reading social cues, and handling rejections smoothly.",
   },
   {
     title: "Shared_workplace",
@@ -37,7 +38,7 @@ const dummydata = [
     boy_name: "Manish",
     girl_name: "Libby",
     description:
-      "Overcoming hesitation, handling possible disinterest, and knowing when to continue or exit.",
+      "Navigate workplace interactions with confidence—handle hesitation, disinterest, and know when to engage or step back.",
   },
   {
     title: "Event_meetup",
@@ -46,7 +47,7 @@ const dummydata = [
     boy_name: "Prakash",
     girl_name: "Amy",
     description:
-      "Overcoming nervousness, handling pauses, and knowing what to say next.",
+      "Conquer social nerves, manage pauses gracefully, and keep the conversation flowing at events.",
   },
 ];
 

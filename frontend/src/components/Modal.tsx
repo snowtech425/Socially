@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation"; // For Next.js 13+ (App Router) OR use "next/router" for older versions
 import { Card, CardContent } from "./ui/card";
 import dummydata from "../components/dummyDatas/dummydata";
+import { v4 as uuidv4 } from "uuid";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,7 +17,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleCardClick = (title: string) => {
-    router.push(`/Hume?title=${encodeURIComponent(title)}`);
+    const uid = uuidv4();
+    router.push(`/Hume?title=${encodeURIComponent(title)}&id=${uid}`);
   };
 
   return (
@@ -31,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Title */}
-        <h2 className=" text-sm  md:text-md font-bold text-gray-900 dark:text-white text-center mb-6">
+        <h2 className=" text-sm mt-5  md:text-md font-bold text-gray-900 dark:text-white text-center mb-6">
           Select a &nbsp;
           <span className="text-primary underline">Scenario</span> to Get
           Started With 🎉 🎉 🎉
@@ -43,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <Card
               key={index}
               onClick={() => handleCardClick(item.title)}
-              className="cursor-pointer bg-gradient-to-br from-blue-100 via-green-100 to-pink-100 dark:from-green-800 dark:via-green-800 dark:to-green-800 dark:text-white rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
+              className="cursor-pointer bg-gradient-to-br from-blue-100 via-green-100 to-pink-100 dark:from-green-600 dark:via-green-700 dark:to-green-700 dark:text-white rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
             >
               <CardContent className="h-fit p-0 md:p-3">
                 <p className="text-md md:text-lg font-semibold mb-0 md:mb-2 flex items-center gap-x-3 w-full ">
