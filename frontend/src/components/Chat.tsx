@@ -16,6 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export default function ClientComponent({
   accessToken,
@@ -58,11 +60,14 @@ export default function ClientComponent({
   // State for user input
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [age, setAge] = useState<number | "">(""); // Age input field
+  const [age, setAge] = useState<number | "">("");
   const [gender, setGender] = useState<"male" | "female">();
   const [AIGender, setAIGender] = useState<"male" | "female">();
   const [showBox, setShowBox] = useState(true);
-  const [consentGiven, setConsentGiven] = useState(false); // Consent state
+  const [consentGiven, setConsentGiven] = useState(false);
+  const [proceed, setProceed] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const configId =
     title && AIGender ? configMap[title.toLowerCase()]?.[AIGender] : undefined;
@@ -94,9 +99,9 @@ export default function ClientComponent({
   };
 
   return (
-    <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20 ">
+    <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20  ">
       {/* Name, Email, Age, and Gender Section */}
-      {showBox && (
+      {showBox && !proceed && (
         <div className="mt-4 p-2 md:p-6 xl:p-3 2xl:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 h-auto  xl:h-auto 2xl:h-auto xl:w-6/12 w-[95%] md:w-1/2 2xl:w-1/3 m-auto shadow-lg transition-all duration-300">
           <div className="flex flex-col gap-2 md:gap-6 xl:gap-y-4 2xl:gap-y-6">
             <div className="flex flex-col xl:flex-row 2xl:flex-col xl:justify-between xl:w-6/6 gap-y-2 xl:gap-y-0 2xl:gap-y-6">
@@ -161,15 +166,36 @@ export default function ClientComponent({
                 onChange={handleConsentChange}
                 className="h-4 w-4 border rounded-md"
               />
-              <label htmlFor="consent" className="text-xs md:text-sm">
-                Yes, I consent to share my data with Socially.ai for improvement
-                purpose
+              <label htmlFor="consent" className="text-xs md:text-xs">
+                I agree that my chat content will be used to improve
+                Socially.ai’s AI. Personal details are not shared.
               </label>
             </div>
           </div>
         </div>
       )}
-
+      {name && email && gender && AIGender && consentGiven && !proceed && (
+        <div className="relative m-auto mt-20 w-64 h-12 bg-gray-200 dark:bg-background border  rounded-full flex items-center px-2 overflow-hidden">
+          <motion.div
+            className="absolute left-0 top-0 bottom-0 flex items-center px-4 bg-primary dark:bg-green-600 text-white rounded-full cursor-pointer"
+            drag={isDragging ? "x" : false}
+            dragConstraints={{ left: 0, right: 180 }}
+            dragElastic={0.2}
+            onMouseDown={() => setIsDragging(true)}
+            onTouchStart={() => setIsDragging(true)}
+            onDragEnd={(_, info) => {
+              if (info.offset.x >= 130) {
+                setIsDragging(false);
+                setIsCompleted(true);
+                setProceed(true);
+                setTimeout(() => setIsCompleted(false), 2000);
+              }
+            }}
+          >
+            {isCompleted ? "Calling..." : "Slide to proceed"}
+          </motion.div>
+        </div>
+      )}
       <VoiceProvider
         auth={{ type: "accessToken", value: accessToken }}
         configId={configId}
@@ -197,7 +223,7 @@ export default function ClientComponent({
           AIGender={AIGender}
         />
         <Controls setShowBox={setShowBox} />
-        {name && email && gender && AIGender && consentGiven && (
+        {name && email && gender && AIGender && consentGiven && proceed && (
           <StartCall
             name={name}
             email={email}
