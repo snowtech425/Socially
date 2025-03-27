@@ -104,7 +104,7 @@ export default function ClientComponent({
       {showBox && !proceed && (
         <div className="mt-4 p-2 md:p-6 xl:p-3 2xl:p-6 border rounded-md bg-gray-100 dark:bg-background z-30 h-auto  xl:h-auto 2xl:h-auto xl:w-6/12 w-[95%] md:w-1/2 2xl:w-1/3 m-auto shadow-lg transition-all duration-300">
           <div className="flex flex-col gap-2 md:gap-6 xl:gap-y-4 2xl:gap-y-6">
-            <div className="flex flex-col xl:flex-row 2xl:flex-col xl:justify-between xl:w-6/6 gap-y-2 xl:gap-y-0 2xl:gap-y-6">
+            {/* <div className="flex flex-col xl:flex-row 2xl:flex-col xl:justify-between xl:w-6/6 gap-y-2 xl:gap-y-0 2xl:gap-y-6">
               <input
                 type="text"
                 value={name}
@@ -120,7 +120,7 @@ export default function ClientComponent({
                 className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 xl:w-3/6 2xl:w-full"
                 placeholder="Enter your email"
               />
-            </div>
+            </div> */}
 
             <input
               type="number"
@@ -174,21 +174,25 @@ export default function ClientComponent({
           </div>
         </div>
       )}
-      {name && email && gender && AIGender && consentGiven && !proceed && (
-        <div className="relative m-auto mt-20 w-fit  bg-gray-200 dark:bg-background border  rounded-full flex items-center  overflow-hidden">
-          <motion.button
-            className="px-6 py-10 md:py-4 md:px-8 bg-primary dark:bg-green-600 text-white rounded-full cursor-pointer hover:opacity-75 "
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              setIsCompleted(true);
-              setProceed(true);
-              setTimeout(() => setIsCompleted(false), 2000);
-            }}
-          >
-            {isCompleted ? "Calling..." : "Proceed to call"}
-          </motion.button>
-        </div>
-      )}
+      {
+        // name && email &&
+
+        gender && AIGender && consentGiven && !proceed && (
+          <div className="relative m-auto mt-20 w-fit  bg-gray-200 dark:bg-background border  rounded-full flex items-center  overflow-hidden">
+            <motion.button
+              className="px-6 py-10 md:py-4 md:px-8 bg-primary dark:bg-green-600 text-white rounded-full cursor-pointer hover:opacity-75 "
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                setIsCompleted(true);
+                setProceed(true);
+                setTimeout(() => setIsCompleted(false), 2000);
+              }}
+            >
+              {isCompleted ? "Calling..." : "Proceed to call"}
+            </motion.button>
+          </div>
+        )
+      }
       <VoiceProvider
         auth={{ type: "accessToken", value: accessToken }}
         configId={configId}
@@ -216,16 +220,20 @@ export default function ClientComponent({
           AIGender={AIGender}
         />
         <Controls setShowBox={setShowBox} />
-        {name && email && gender && AIGender && consentGiven && proceed && (
-          <StartCall
-            name={name}
-            email={email}
-            gender={gender}
-            scenario={title}
-            age={age}
-            setShowBox={setShowBox}
-          />
-        )}
+        {
+          // name && email &&
+
+          gender && AIGender && consentGiven && proceed && (
+            <StartCall
+              name={name}
+              email={email}
+              gender={gender}
+              scenario={title}
+              age={age}
+              setShowBox={setShowBox}
+            />
+          )
+        }
       </VoiceProvider>
     </div>
   );
