@@ -175,25 +175,18 @@ export default function ClientComponent({
         </div>
       )}
       {name && email && gender && AIGender && consentGiven && !proceed && (
-        <div className="relative m-auto mt-20 w-64 h-12 bg-gray-200 dark:bg-background border  rounded-full flex items-center px-2 overflow-hidden">
-          <motion.div
-            className="absolute left-0 top-0 bottom-0 flex items-center px-4 bg-primary dark:bg-green-600 text-white rounded-full cursor-pointer"
-            drag={isDragging ? "x" : false}
-            dragConstraints={{ left: 0, right: 180 }}
-            dragElastic={0.2}
-            onMouseDown={() => setIsDragging(true)}
-            onTouchStart={() => setIsDragging(true)}
-            onDragEnd={(_, info) => {
-              if (info.offset.x >= 130) {
-                setIsDragging(false);
-                setIsCompleted(true);
-                setProceed(true);
-                setTimeout(() => setIsCompleted(false), 2000);
-              }
+        <div className="relative m-auto mt-20 w-fit  bg-gray-200 dark:bg-background border  rounded-full flex items-center  overflow-hidden">
+          <motion.button
+            className="px-6 py-10 md:py-4 md:px-8 bg-primary dark:bg-green-600 text-white rounded-full cursor-pointer hover:opacity-75 "
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              setIsCompleted(true);
+              setProceed(true);
+              setTimeout(() => setIsCompleted(false), 2000);
             }}
           >
-            {isCompleted ? "Calling..." : "Slide to proceed"}
-          </motion.div>
+            {isCompleted ? "Calling..." : "Proceed to call"}
+          </motion.button>
         </div>
       )}
       <VoiceProvider
