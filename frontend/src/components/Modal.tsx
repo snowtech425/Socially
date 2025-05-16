@@ -34,11 +34,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         {/* Title */}
         <h2 className=" text-sm mt-5  md:text-md font-bold text-[#1d1058] dark:text-white text-center mb-6">
-          Select a &nbsp;
-          <span className="text-[#1d1058] dark:text-white underline">
+          What do you want to practice today? &nbsp;
+          {/* <span className="text-[#1d1058] dark:text-white underline">
             Scenario
           </span>{" "}
-          to Get Started With 🎉 🎉 🎉
+          to Get Started With 🎉 🎉 🎉 */}
         </h2>
 
         {/* Modal Content */}

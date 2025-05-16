@@ -42,30 +42,40 @@ function ScienceAndPractice() {
         {/* The Science Behind It */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-            The <span className="text-[#422b80]">Science</span> Behind It
+            How <span className="text-[#422b80]">SmallTalk</span> Works
           </h2>
-          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          {/* <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Social confidence isn't magic – it's a skill. And like any skill, it
-            improves with deliberate practice.
-          </p>
+            improves with deliberate practice
+          </p> */}
         </div>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: "Athletes",
-              desc: "Perfect their technique through slow-motion replay.",
-              icon: <FaRunning className="text-5xl text-[#422b80]" />,
+              title: "Safe practice space",
+              desc: "Practice conversations without the fear of messing up in front of real people.",
+              // icon: <FaRunning className="text-5xl text-[#422b80]" />,
             },
             {
-              title: "Musicians",
-              desc: "Master pieces by practicing difficult sections.",
-              icon: <FaMusic className="text-5xl text-[#422b80]" />,
+              title: "Real conversation reps",
+              desc: "Get as many practice reps as you want. The only way to build confidence is to practice.",
+              // icon: <FaMusic className="text-5xl text-[#422b80]" />,
             },
             {
-              title: "Public Speakers",
-              desc: "Refine their delivery through recorded practice.",
+              title: "Conversation rescue support (Coming Soon)",
+              desc: "Stuck or frozen? We’ll gently guide you to keep the conversation going.",
+              // icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
+            },
+            {
+              title: "Low-pressure feedback (Coming Soon)",
+              desc: "Get simple feedback on what went well and what could improve.",
               icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
+            },
+            {
+              title: "Scenario practice modules",
+              desc: "Practice real-life situations like dates, meeting new people, ordering coffee, networking at events, or workplace conversations.",
+              // icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
             },
           ].map((item, idx) => (
             <div
