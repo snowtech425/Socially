@@ -16,7 +16,7 @@ const Footer = () => {
                 href={"/"}
                 className="font-semibold text-[#422b80]"
               >
-                Socially.ai
+                SmallTalk
               </Link>
             </p>
           </div>

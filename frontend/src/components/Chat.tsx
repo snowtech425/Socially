@@ -168,7 +168,7 @@ export default function ClientComponent({
               />
               <label htmlFor="consent" className="text-xs md:text-xs">
                 I agree that my chat content will be used to improve
-                Socially.ai’s AI. Personal details are not shared.
+                SmallTalk’s AI. Personal details are not shared.
               </label>
             </div>
           </div>
