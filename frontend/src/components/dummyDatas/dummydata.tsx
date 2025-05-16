@@ -11,7 +11,7 @@ const dummydata = [
     girl_name: "Sarah",
     boy_name: "Srijan",
     description:
-      "Master your date skills by practicing engaging conversation and handling tricky moments with ease.",
+      "Practice confident, engaging conversation for dates and tricky social moments.",
   },
   {
     title: "Barista",
@@ -20,34 +20,34 @@ const dummydata = [
     girl_name: "Sangita",
     boy_name: "Suman",
     description:
-      "Turn small talk into meaningful exchanges and make every café interaction feel natural and fun.",
+      "Turn small talk into meaningful exchanges with café staff.",
   },
   {
-    title: "Approaching_stranger",
+    title: "Approaching Someone New",
     icon: <FaPerson />,
     color: "text-blue-600",
     boy_name: "Abhishek",
     girl_name: "Simran",
     description:
-      "Build confidence in meeting new people, reading social cues, and handling rejections smoothly.",
+      "Build confidence approaching people, reading social cues, and handling rejection.",
   },
   {
-    title: "Shared_workplace",
+    title: "Workplace Conversations",
     icon: <FaSlideshare />,
     color: "text-black",
     boy_name: "Manish",
     girl_name: "Libby",
     description:
-      "Navigate workplace interactions with confidence—handle hesitation, disinterest, and know when to engage or step back.",
+      "Navigate interactions at work, handle hesitation, disinterest, or knowing when to engage.",
   },
   {
-    title: "Event_meetup",
+    title: "Event / meetup",
     icon: <FaPizzaSlice />,
     color: "text-blue-900",
     boy_name: "Prakash",
     girl_name: "Amy",
     description:
-      "Conquer social nerves, manage pauses gracefully, and keep the conversation flowing at events.",
+      "Manage social nerves and keep conversations flowing naturally at events.",
   },
 ];
 

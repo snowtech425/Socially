@@ -15,29 +15,27 @@ function Hero() {
     <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-2 sm:pb-32 lg:gap-x-8 xl:gap-x-12 lg:pt-24 xl:pt-32 lg:pb-52">
       <div className="col-span-12 px-6 lg:px-0 lg:pt-4">
         <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-          <h1 className="relative w-full tracking-tight text-balance mt-16 font-bold !leading-tight text-5xl md:text-6xl lg:text-7xl text-[#422b80] dark:text-[#422b80]">
-            How to Build Social Confidence Without Risking Real Relationships
+          <h1 className="relative w-full tracking-tight text-balance mt-16 font-bold !leading-tight text-5xl md:text-6xl lg:text-7xl text-white">
+            How can you stop freezing in conversations?
           </h1>
-          <p className="mt-6 text-2xl font-semibold text-[#422b80] dark:text-gray-100 leading-snug tracking-wide">
+          {/* <p className="mt-6 text-2xl font-semibold text-[#422b80] dark:text-gray-100 leading-snug tracking-wide">
             Practice{" "}
             <span className="text-[#a783d8] dark:text-[#a783d8] font-bold">
               real conversations
             </span>{" "}
             in private, get better in public.
-          </p>
+          </p> */}
           <div>
             <p className="mt-6 text-lg text-[#422b80]/60 dark:text-gray-300 leading-relaxed tracking-wide">
-              Ever noticed how the best advice for improving social skills is
-              always
+              SmallTalk gives you a safe, judgment-free space to practice real conversations
               <span className="italic text-[#422b80] dark:text-gray-200">
-                "just put yourself out there"
+                "—before you have to do it for real."
               </span>
               ?
             </p>
 
             <p className="mt-4 text-lg font-medium text-[#422b80] dark:text-gray-400 leading-relaxed">
               <span className="text-[#422b80]/80 dark:text-gray-100 font-extrabold">
-                Easier said than done.
               </span>
             </p>
             <button

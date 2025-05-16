@@ -11,7 +11,7 @@ function Working() {
         <div className="md:w-full">
           <div className="md:text-start">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-              How It <span className="text-[#422b80]">Works</span>
+              Why Practice  <span className="text-[#422b80]"> Matters </span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
               Follow these simple steps to improve your skills effortlessly.
@@ -24,41 +24,41 @@ function Working() {
                 step: "1",
                 title: "Pick Your Scenario",
                 description:
-                  "Choose from hundreds of real-world situations, or create your own custom scenario.",
+                  "The only way to get better at conversations is to practice.But practicing with real people is hard. It feels awkward, unpredictable, and the stakes feel too high.",
               },
               {
                 step: "2",
                 title: "Practice Naturally",
                 description:
-                  "Interact through text or voice, just like you would in real life.",
+                  "SmallTalk gives you a safe space to practice first—so you can walk into real conversations feeling calm, clear, and confident.",
               },
               {
                 step: "3",
                 title: "Get Smart Feedback",
                 description:
-                  "Receive detailed insights about your communication style, body language, and word choice.",
+                  "You don’t have to be perfect. You just need a place to practice.",
               },
               {
                 step: "4",
                 title: "Build Real Confidence",
                 description:
-                  "Watch your skills improve as you practice different approaches.",
+                  "I built SmallTalk because I struggled too. I used to freeze mid-sentence, panic, and walk away wishing I’d said more. There was nowhere safe to practice—so I made one.",
               },
             ].map((item, idx) => (
               <div key={idx} className="relative flex items-center">
                 {/* Step Number */}
-                <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-12 rounded-full bg-[#422b80] text-white text-xl font-semibold shadow-lg">
+                {/* <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-12 rounded-full bg-[#422b80] text-white text-xl font-semibold shadow-lg">
                   {item.step}
-                </div>
+                </div> */}
 
                 {/* Step Content */}
                 <div className="ml-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                  {/* <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                     {item.title}
-                  </h3>
-                  <p className="mt-2 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  </h3> */}
+                  <h5 className="mt-2 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                     {item.description}
-                  </p>
+                  </h5>
                 </div>
 
                 {/* Arrow - Except for the last step */}
