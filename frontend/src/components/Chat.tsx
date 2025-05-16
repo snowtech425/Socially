@@ -135,7 +135,7 @@ export default function ClientComponent({
             <div className="flex flex-row gap-x-5 gap-y-2">
               <Select value={gender} onValueChange={handleGenderChange}>
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select your gender" />
+                  <SelectValue placeholder="How should we refer to you?" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -147,12 +147,13 @@ export default function ClientComponent({
 
               <Select value={AIGender} onValueChange={handleAIGenderChange}>
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select  AI gender" />
+                  <SelectValue placeholder="How should the AI sound" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>
+                    {/* <SelectItem value="Prefer not to say">Prefer not to say</SelectItem> */}
                   </SelectGroup>
                 </SelectContent>
               </Select>
