@@ -8,7 +8,7 @@ function Features() {
       <div className="text-center">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
           Pain Bullets{" "}
-          {/* <span className="text-[#422b80] underline">Socially.ai</span>? */}
+          {/* <span className="text-[#422b80] underline">SmallTalk</span>? */}
         </h2>
         <p className="mt-4 text-lg text-gray-700/90 dark:text-gray-400">
           Your Conversation Confidence Roadmap
@@ -25,7 +25,7 @@ function Features() {
             without the anxiety of real-world consequences.
           </p> */}
         </div>
-        
+
         {/* Feature 2 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
