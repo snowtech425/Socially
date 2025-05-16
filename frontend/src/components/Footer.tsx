@@ -14,7 +14,7 @@ const Footer = () => {
               <Link
                 target="_blank"
                 href={"/"}
-                className="font-semibold text-green-600"
+                className="font-semibold text-[#422b80]"
               >
                 Socially.ai
               </Link>

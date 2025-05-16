@@ -20,7 +20,7 @@ function CTA() {
         </p>
         <button
           onClick={handleModalToggle}
-          className="mt-8 px-8 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors"
+          className="mt-8 px-8 py-3 bg-white text-[#a783d8] font-semibold rounded-lg hover:bg-green-50 transition-colors"
         >
           Start Practicing Now
         </button>

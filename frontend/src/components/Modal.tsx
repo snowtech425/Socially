@@ -33,10 +33,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Title */}
-        <h2 className=" text-sm mt-5  md:text-md font-bold text-gray-900 dark:text-white text-center mb-6">
+        <h2 className=" text-sm mt-5  md:text-md font-bold text-[#1d1058] dark:text-white text-center mb-6">
           Select a &nbsp;
-          <span className="text-primary underline">Scenario</span> to Get
-          Started With 🎉 🎉 🎉
+          <span className="text-[#1d1058] dark:text-white underline">
+            Scenario
+          </span>{" "}
+          to Get Started With 🎉 🎉 🎉
         </h2>
 
         {/* Modal Content */}
@@ -45,16 +47,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <Card
               key={index}
               onClick={() => handleCardClick(item.title)}
-              className="cursor-pointer bg-gradient-to-br from-blue-100 via-green-100 to-pink-100 dark:from-green-600 dark:via-green-700 dark:to-green-700 dark:text-white rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
+              className="cursor-pointer bg-gradient-to-b from-[#422b80] to-[#1d1058]  dark:text-white rounded-xl p-5 md:p-4 shadow-lg hover:shadow-2xl transition-shadow"
             >
               <CardContent className="h-fit p-0 md:p-3">
-                <p className="text-md md:text-lg font-semibold mb-0 md:mb-2 flex items-center gap-x-3 w-full ">
+                <p className="text-md md:text-lg font-semibold mb-0 md:mb-2 flex items-center gap-x-3 w-full border-b ">
                   <span className={item.color}>{item.icon}</span>
-                  <span className=" text-gray-900 text-sm md:text-base dark:text-white break-all mb-2 md:mb-0 ">
+                  <span className=" text-[#E2EAFF] text-sm md:text-base dark:text-white break-all mb-2 md:mb-0 ">
                     {item.title}
                   </span>
                 </p>
-                <p className=" md:flex text-sm text-gray-700 dark:text-white text-center md:text-left">
+                <p className=" md:flex text-sm text-[#E2EAFF] dark:text-white text-center md:text-left">
                   {item.description}
                 </p>
               </CardContent>

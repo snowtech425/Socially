@@ -11,7 +11,7 @@ function Working() {
         <div className="md:w-full">
           <div className="md:text-start">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-              How It <span className="text-green-500">Works</span>
+              How It <span className="text-[#422b80]">Works</span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
               Follow these simple steps to improve your skills effortlessly.
@@ -47,7 +47,7 @@ function Working() {
             ].map((item, idx) => (
               <div key={idx} className="relative flex items-center">
                 {/* Step Number */}
-                <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-12 rounded-full bg-green-600 text-white text-xl font-semibold shadow-lg">
+                <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-12 rounded-full bg-[#422b80] text-white text-xl font-semibold shadow-lg">
                   {item.step}
                 </div>
 

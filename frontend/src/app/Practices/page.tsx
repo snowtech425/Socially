@@ -16,33 +16,33 @@ const features = [
   {
     title: "Preview Approaches",
     desc: "See how different approaches might land before trying them in real life.",
-    icon: <FaEye className="text-4xl text-green-500" />,
+    icon: <FaEye className="text-4xl text-[#a783d8]" />,
   },
   {
     title: "Practice Conversations",
     desc: "Practice difficult conversations until they feel natural.",
-    icon: <FaComments className="text-4xl text-green-500" />,
+    icon: <FaComments className="text-4xl text-[#a783d8]" />,
   },
   {
     title: "Experiment with Styles",
     desc: "Try new communication styles without fear of judgment.",
-    icon: <FaPalette className="text-4xl text-green-500" />,
+    icon: <FaPalette className="text-4xl text-[#a783d8]" />,
   },
   {
     title: "Build Confidence",
     desc: "Gain genuine confidence through repetition and feedback.",
-    icon: <FaCheckCircle className="text-4xl text-green-500" />,
+    icon: <FaCheckCircle className="text-4xl text-[#a783d8]" />,
   },
 ];
 
 function ScienceAndPractice() {
   return (
-    <section className="bg-green-50 dark:bg-gray-900 py-24">
+    <section className=" py-24">
       <MaxWidthWrapper>
         {/* The Science Behind It */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-            The <span className="text-green-500">Science</span> Behind It
+            The <span className="text-[#422b80]">Science</span> Behind It
           </h2>
           <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Social confidence isn't magic – it's a skill. And like any skill, it
@@ -55,17 +55,17 @@ function ScienceAndPractice() {
             {
               title: "Athletes",
               desc: "Perfect their technique through slow-motion replay.",
-              icon: <FaRunning className="text-5xl text-green-500" />,
+              icon: <FaRunning className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Musicians",
               desc: "Master pieces by practicing difficult sections.",
-              icon: <FaMusic className="text-5xl text-green-500" />,
+              icon: <FaMusic className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Public Speakers",
               desc: "Refine their delivery through recorded practice.",
-              icon: <FaMicrophone className="text-5xl text-green-500" />,
+              icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
             },
           ].map((item, idx) => (
             <div
@@ -95,7 +95,7 @@ function ScienceAndPractice() {
         <div className="relative mt-52 text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
             No More Learning Through
-            <span className="text-green-500"> Painful Experiences</span>
+            <span className="text-[#422b80]"> Painful Experiences</span>
           </h2>
 
           <p className="mt-6 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
@@ -110,13 +110,13 @@ function ScienceAndPractice() {
             {[...features, ...features].map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 w-72 bg-transparent dark:bg-gray-800 rounded-2xl border text-center flex-shrink-0"
+                className="p-6 w-72 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-2xl border text-center flex-shrink-0"
               >
                 <div className="mb-4 flex justify-center">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-white dark:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-gray-600 dark:text-gray-300">
+                <p className="mt-2 text-white dark:text-gray-300">
                   {item.desc}
                 </p>
               </div>

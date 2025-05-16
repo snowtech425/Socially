@@ -10,23 +10,23 @@ export default async function Home() {
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-green-50 to-white dark:from-gray-800 dark:to-gray-900">
+      <section className="bg-gradient-to-b from-[rgba(226,234,255,0)] to-[#E2EAFF] dark:from-gray-800 dark:to-gray-900">
         <Hero />
       </section>
       {/* Features Section */}
-      <section className="bg-white dark:bg-gray-900 py-24">
+      <section className="bg-[#ffffffb3] dark:bg-gray-900 py-24">
         <Features />
       </section>
       {/* How It Works Section */}
-      <section className="bg-gradient-to-b from-white to-green-50 dark:from-gray-900 dark:to-gray-800 py-24">
+      <section className="bg-gradient-to-b from-[rgba(226,234,255,0)] to-[#E2EAFF] dark:from-gray-900 dark:to-gray-800 py-24">
         <Working />
       </section>
       {/* ScienceAndPractices Section */}
-      <section className="bg-white ">
+      <section className="bg-[#E2EAFF] to-[#E2EAFF] dark:bg-gray-900 ">
         <ScienceAndPractice />
       </section>
       {/* CTA Section */}
-      <section className="bg-green-600 py-24">
+      <section className="bg-[#a783d8] py-24">
         <CTA />
       </section>
     </div>

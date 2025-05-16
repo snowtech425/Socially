@@ -5,16 +5,16 @@
 
 @layer base {
   :root {
-    --background: 144 100% 97%;
+    --background: 223 100% 94%;
     --foreground: 240 10% 3.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 256 60% 27%; /* deep purple base */
+    --card-foreground: 0 0% 100%; /* white text */
 
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 144 71% 45%;
+    --primary: #a783d8;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
