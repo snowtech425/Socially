@@ -25,6 +25,7 @@ function Features() {
             without the anxiety of real-world consequences.
           </p> */}
         </div>
+        
         {/* Feature 2 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
@@ -35,6 +36,7 @@ function Features() {
             communication style.
           </p> */}
         </div>
+
         {/* Feature 3 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
@@ -45,6 +47,7 @@ function Features() {
             confident.
           </p> */}
         </div>
+
         {/* Feature 4 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
@@ -54,6 +57,8 @@ function Features() {
             Choose the scenarios that matter to you and practice until you feel
             confident.
           </p> */}
+          </div>
+
           {/* Feature 5 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
@@ -64,6 +69,7 @@ function Features() {
             confident.
           </p> */}
         </div>
+
          {/* Feature 6 */}
         <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold text-white dark:text-white">
