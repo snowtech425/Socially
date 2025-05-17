@@ -11,7 +11,7 @@ function Working() {
         <div className="md:w-full">
           <div className="md:text-start">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-              Why Practice  <span className="text-[#422b80]"> Matters </span>
+              Why Practice <span className="text-[#422b80]"> Matters </span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
               Follow these simple steps to improve your skills effortlessly.
@@ -47,9 +47,9 @@ function Working() {
             ].map((item, idx) => (
               <div key={idx} className="relative flex items-center">
                 {/* Step Number */}
-                {/* <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-12 rounded-full bg-[#422b80] text-white text-xl font-semibold shadow-lg">
+                <div className="flex items-center justify-center w-8 h-7 p-2 md:w-8  md:h-8 lg:w-12 lg:h-16 rounded-e-full bg-[#422b80] text-white text-xl font-semibold shadow-lg">
                   {item.step}
-                </div> */}
+                </div>
 
                 {/* Step Content */}
                 <div className="ml-6">
@@ -63,7 +63,10 @@ function Working() {
 
                 {/* Arrow - Except for the last step */}
                 {idx !== 3 && (
-                  <div className="absolute left-6 top-[80px] w-0.5 h-16 bg-gray-300 dark:bg-gray-600 hidden md:block"></div>
+                  <div>
+                    <div className="absolute left-0 top-[85px] w-1 h-4 bg-gray-300 dark:bg-gray-600 hidden md:block"></div>
+                    <div className="absolute left-2 top-[75px] w-1 h-8 bg-gray-300 dark:bg-gray-600 hidden md:block"></div>
+                  </div>
                 )}
               </div>
             ))}

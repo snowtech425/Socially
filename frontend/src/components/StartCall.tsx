@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 import { addUserToSpreadsheet } from "@/store/slices/authSlice";
 
 export default function StartCall({
-  name,
-  email,
+  // name,
+  // email,
   gender,
   scenario,
   age,
@@ -48,8 +48,8 @@ export default function StartCall({
                       console.log("Connected");
                       dispatch(
                         addUserToSpreadsheet({
-                          name,
-                          email,
+                          // name,
+                          // email,
                           gender,
                           scenario,
                           age,

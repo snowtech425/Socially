@@ -16,69 +16,63 @@ function Features() {
       </div>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Feature 1 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center ">
           <h3 className="text-xl font-semibold text-white dark:text-white">
-            Stop your mind from going blank when you talk to people
+            Never Go Blank Again
           </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Practice job interviews, first dates, or difficult conversations
-            without the anxiety of real-world consequences.
-          </p> */}
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
+            Stop your mind from going blank when you talk to people
+          </p>
         </div>
 
         {/* Feature 2 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center">
           <h3 className="text-xl font-semibold text-white dark:text-white">
-            Practice safely, so you don’t avoid conversations out of fear
+            Build Confidence Through Practice
           </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Understand exactly what works (and what doesn't) in your
-            communication style.
-          </p> */}
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
+            Practice safely, so you don’t avoid conversations out of fear
+          </p>
         </div>
 
         {/* Feature 3 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center">
           <h3 className="text-xl font-semibold text-white dark:text-white">
-            Get conversational reps before it counts
+            Train Before the Real Thing
           </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Choose the scenarios that matter to you and practice until you feel
-            confident.
-          </p> */}
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
+            Get conversational reps before it counts
+          </p>
         </div>
 
         {/* Feature 4 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center">
           <h3 className="text-xl font-semibold text-white dark:text-white">
+            Master the Art of Flow
+          </h3>
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
             Keep the conversation going without awkward silences
-          </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Choose the scenarios that matter to you and practice until you feel
-            confident.
-          </p> */}
-          </div>
-
-          {/* Feature 5 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
-          <h3 className="text-xl font-semibold text-white dark:text-white">
-            Sound natural—not robotic or scripted
-          </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Choose the scenarios that matter to you and practice until you feel
-            confident.
-          </p> */}
+          </p>
         </div>
 
-         {/* Feature 6 */}
-        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md">
+        {/* Feature 5 */}
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center">
           <h3 className="text-xl font-semibold text-white dark:text-white">
-            Feel ready when real conversations happen
+            Sound Like Yourself
           </h3>
-          {/* <p className="mt-4 text-muted/90 dark:text-gray-400">
-            Choose the scenarios that matter to you and practice until you feel
-            confident.
-          </p> */}
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
+            Sound natural—not robotic or scripted
+          </p>
+        </div>
+
+        {/* Feature 6 */}
+        <div className="p-6 bg-gradient-to-b from-[#422b80] to-[#1d1058] dark:bg-gray-800 rounded-lg shadow-md text-center">
+          <h3 className="text-xl font-semibold text-white dark:text-white">
+            Be Conversation-Ready
+          </h3>
+          <p className="mt-4 text-muted/90 dark:text-gray-400">
+            Feel ready when real conversations happen
+          </p>
         </div>
       </div>
     </MaxWidthWrapper>

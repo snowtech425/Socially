@@ -7,10 +7,13 @@ import {
   FaMusic,
   FaMicrophone,
   FaEye,
+  FaShieldVirus,
   FaComments,
   FaPalette,
   FaCheckCircle,
+  FaShieldAlt,
 } from "react-icons/fa";
+import { FaHandsBound, FaShield } from "react-icons/fa6";
 
 const features = [
   {
@@ -55,27 +58,27 @@ function ScienceAndPractice() {
             {
               title: "Safe practice space",
               desc: "Practice conversations without the fear of messing up in front of real people.",
-              // icon: <FaRunning className="text-5xl text-[#422b80]" />,
+              icon: <FaRunning className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Real conversation reps",
               desc: "Get as many practice reps as you want. The only way to build confidence is to practice.",
-              // icon: <FaMusic className="text-5xl text-[#422b80]" />,
+              icon: <FaMusic className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Conversation rescue support (Coming Soon)",
               desc: "Stuck or frozen? We’ll gently guide you to keep the conversation going.",
-              // icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
+              icon: <FaShieldAlt className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Low-pressure feedback (Coming Soon)",
               desc: "Get simple feedback on what went well and what could improve.",
-              icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
+              icon: <FaHandsBound className="text-5xl text-[#422b80]" />,
             },
             {
               title: "Scenario practice modules",
               desc: "Practice real-life situations like dates, meeting new people, ordering coffee, networking at events, or workplace conversations.",
-              // icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
+              icon: <FaMicrophone className="text-5xl text-[#422b80]" />,
             },
           ].map((item, idx) => (
             <div
@@ -93,13 +96,13 @@ function ScienceAndPractice() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             But instead of just recording yourself, you get intelligent feedback
             and natural responses that help you understand the subtle dynamics
             of social interaction.
           </p>
-        </div>
+        </div> */}
 
         {/* No More Learning Through Painful Experiences */}
         <div className="relative mt-52 text-center">

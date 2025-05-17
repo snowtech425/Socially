@@ -168,8 +168,8 @@ export default function ClientComponent({
                 className="h-4 w-4 border rounded-md"
               />
               <label htmlFor="consent" className="text-xs md:text-xs">
-                I agree that my chat content will be used to improve
-                SmallTalk’s AI. Personal details are not shared.
+                I agree that my chat content will be used to improve SmallTalk’s
+                AI. Personal details are not shared.
               </label>
             </div>
           </div>
@@ -225,8 +225,8 @@ export default function ClientComponent({
                       setProceed(true);
                       setTimeout(() => setIsCompleted(false), 2000);
                     }}
-                    name={name}
-                    email={email}
+                    // name={name}
+                    // email={email}
                     gender={gender}
                     scenario={title}
                     age={age}

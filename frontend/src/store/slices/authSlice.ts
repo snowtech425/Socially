@@ -69,8 +69,8 @@ export const addUserToSpreadsheet: any = createAsyncThunk(
   "auth/add_user",
   async (
     data: {
-      name: string;
-      email: string;
+      // name: string;
+      // email: string;
       gender: string;
       age: number;
       scenario: string;
@@ -79,8 +79,8 @@ export const addUserToSpreadsheet: any = createAsyncThunk(
   ) => {
     try {
       const res = await Agent.User.add_data({
-        name: data.name,
-        email: data.email,
+        // name: data.name,
+        // email: data.email,
         gender: data.gender,
         scenario: data.scenario,
         age: data.age,

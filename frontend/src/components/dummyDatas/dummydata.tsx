@@ -6,6 +6,7 @@ import { FaPerson, FaPizzaSlice } from "react-icons/fa6";
 const dummydata = [
   {
     title: "Date",
+    heading: "Date",
     icon: <FaHeartbeat />,
     color: "text-red-500",
     girl_name: "Sarah",
@@ -15,15 +16,16 @@ const dummydata = [
   },
   {
     title: "Barista",
+    heading: "Barista",
     icon: <FaCoffee />,
     color: "text-red-900",
     girl_name: "Sangita",
     boy_name: "Suman",
-    description:
-      "Turn small talk into meaningful exchanges with café staff.",
+    description: "Turn small talk into meaningful exchanges with café staff.",
   },
   {
-    title: "Approaching Someone New",
+    title: "Approaching_stranger",
+    heading: "Approaching Someone New",
     icon: <FaPerson />,
     color: "text-blue-600",
     boy_name: "Abhishek",
@@ -32,7 +34,8 @@ const dummydata = [
       "Build confidence approaching people, reading social cues, and handling rejection.",
   },
   {
-    title: "Workplace Conversations",
+    title: "Shared_workplace",
+    heading: "Workplace Conversations",
     icon: <FaSlideshare />,
     color: "text-black",
     boy_name: "Manish",
@@ -41,7 +44,8 @@ const dummydata = [
       "Navigate interactions at work, handle hesitation, disinterest, or knowing when to engage.",
   },
   {
-    title: "Event / meetup",
+    title: "Event_meetup",
+    heading: "Event / meetup",
     icon: <FaPizzaSlice />,
     color: "text-blue-900",
     boy_name: "Prakash",
