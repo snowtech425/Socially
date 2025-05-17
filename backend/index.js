@@ -53,7 +53,7 @@ app.post("/add-data", async (req, res) => {
     let { age } = req.body;
 
     // Validate input
-    if (!name || !email || !gender || !scenario) {
+    if (!gender || !scenario) {
       return res.status(400).json({ error: "Missing required fields" });
     }
     if (!age) {
