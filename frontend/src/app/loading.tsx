@@ -4,7 +4,7 @@ import type {} from "ldrs";
 function Loading() {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
-      <l-spiral color={"green"}></l-spiral>
+      <l-spiral color={"#422b80"}></l-spiral>
     </div>
   );
 }

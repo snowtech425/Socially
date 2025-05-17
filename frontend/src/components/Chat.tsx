@@ -2,11 +2,13 @@
 
 import { VoiceProvider } from "@humeai/voice-react";
 import Messages from "./Messages";
-import { ComponentRef, useRef, useState } from "react";
+import { ComponentRef, useEffect, useRef, useState } from "react";
 import React from "react";
 import StartCall from "./StartCall";
 import Controls from "./Controls";
 import { useSearchParams } from "next/navigation";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { FaSuperpowers } from "react-icons/fa";
 import {
   Select,
   SelectContent,
@@ -18,6 +20,7 @@ import {
 } from "./ui/select";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ClientComponent({
   accessToken,
@@ -68,6 +71,8 @@ export default function ClientComponent({
   const [proceed, setProceed] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const configId =
     title && AIGender ? configMap[title.toLowerCase()]?.[AIGender] : undefined;
@@ -97,6 +102,26 @@ export default function ClientComponent({
   const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConsentGiven(e.target.checked); // Update consent state
   };
+
+  // useEffect(() => {
+  //   // Wait for search params like "title" to be available
+  //   if (title) {
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //     }, 800); // adjust delay as needed
+  //   }
+  // }, [title]);
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex items-center justify-center h-[78vh]">
+  //       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
+  //     </div>
+  //   );
+  // }
+  useEffect(() => {
+    console.log("Hydrated title:", title);
+  }, [title]);
 
   return (
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20  ">
@@ -132,9 +157,9 @@ export default function ClientComponent({
               min="0"
             />
 
-            <div className="flex flex-row gap-x-5 gap-y-2">
+            <div className="flex flex-col md:flex-row gap-x-5 gap-y-2">
               <Select value={gender} onValueChange={handleGenderChange}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full  md:w-3/6">
                   <SelectValue placeholder="How should we refer to you?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -146,7 +171,7 @@ export default function ClientComponent({
               </Select>
 
               <Select value={AIGender} onValueChange={handleAIGenderChange}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full md:w-3/6">
                   <SelectValue placeholder="How should the AI sound" />
                 </SelectTrigger>
                 <SelectContent>
@@ -202,7 +227,7 @@ export default function ClientComponent({
           gender={gender}
           AIGender={AIGender}
         />
-        <Controls setShowBox={setShowBox} />
+        <Controls setShowBox={setShowBox} setAlert={setAlert} />
         {/* {
           // name && email &&
 
@@ -213,31 +238,53 @@ export default function ClientComponent({
         {
           // name && email &&
 
-          gender && AIGender && consentGiven && !proceed && (
-            <div className="relative m-auto mt-20 w-fit  bg-transparent dark:bg-background border  rounded-full flex items-center  overflow-hidden">
-              {isCompleted ? (
-                "Calling..."
-              ) : (
-                <div className="flex">
-                  <StartCall
-                    onClick={() => {
-                      setIsCompleted(true);
-                      setProceed(true);
-                      setTimeout(() => setIsCompleted(false), 2000);
-                    }}
-                    // name={name}
-                    // email={email}
-                    gender={gender}
-                    scenario={title}
-                    age={age}
-                    setShowBox={setShowBox}
-                  />
-                </div>
-              )}
-            </div>
-          )
+          gender &&
+            AIGender &&
+            consentGiven &&
+            !proceed &&
+            (isCompleted ? (
+              "Calling..."
+            ) : (
+              <div className="flex">
+                <StartCall
+                  onClick={() => {
+                    setIsCompleted(true);
+                    setProceed(true);
+                    setTimeout(() => setIsCompleted(false), 2000);
+                  }}
+                  // name={name}
+                  // email={email}
+                  gender={gender}
+                  scenario={title}
+                  age={age}
+                  setShowBox={setShowBox}
+                  setAlert={setAlert}
+                />
+              </div>
+            ))
         }
       </VoiceProvider>
+      {alert && (
+        <Alert className="flex flex-col m-auto justify-center w-fit items-center border backdrop-blur-sm bg-tranparent/20 shadow-lg animate-bounce">
+          <div className="flex flex-col">
+            <div className="flex gap-x-2">
+              <FaSuperpowers className="h-4 w-4" />
+              <AlertTitle className="font-bold">
+                Your Feeback Is Appreciated
+              </AlertTitle>
+            </div>
+            <Link
+              href={"https://forms.gle/AL3nJgQWGsxnJ6Hr7"}
+              target="__blank"
+              onClick={() => setAlert(false)}
+            >
+              <AlertDescription className="underline">
+                Click here to send us a feedback and help us improve for you.
+              </AlertDescription>
+            </Link>
+          </div>
+        </Alert>
+      )}
     </div>
   );
 }

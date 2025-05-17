@@ -14,7 +14,7 @@ export default async function Home() {
         <Hero />
       </section>
       {/* Features Section */}
-      <section className="bg-[#ffffffb3] dark:bg-gray-900 pb-24">
+      <section className="bg-[#ffffffb3] dark:bg-gray-900 pb-24 dark:pt-24">
         <Features />
       </section>
       {/* How It Works Section */}

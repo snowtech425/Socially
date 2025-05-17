@@ -14,6 +14,8 @@ export default function StartCall({
   scenario,
   age,
   setShowBox,
+  setAlert,
+  alert,
 }: any) {
   const { status, connect } = useVoice();
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export default function StartCall({
     <div className="m-auto pt-10">
       {status.value !== "connected" ? (
         <motion.div
-          className="fixed left-0 right-0 top-[40%] p-4 flex flex-col items-center justify-center gap-y-20"
+          className="fixed left-0 right-0 top-[47%] p-4 flex flex-col items-center justify-center gap-y-20"
           initial="initial"
           animate="enter"
           exit="exit"
@@ -43,6 +45,8 @@ export default function StartCall({
                 className="relative z-50 flex flex-col items-center justify-center w-36 h-36 rounded-full bg-green-400 dark:bg-green-900 text-white shadow-lg hover:bg-green-600 hover:border-2 hover:border-green-500 "
                 onClick={() => {
                   setShowBox(false);
+                  setAlert(false);
+
                   connect()
                     .then(() => {
                       console.log("Connected");
