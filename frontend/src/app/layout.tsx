@@ -10,7 +10,7 @@ import { ReduxProvider } from "@/store/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Socially",
+  title: "SmallTalk",
   description: "Created with love by Snowtech Innovations",
 };
 
