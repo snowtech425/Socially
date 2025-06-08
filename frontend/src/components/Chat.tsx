@@ -72,6 +72,7 @@ export default function ClientComponent({
   const [isCompleted, setIsCompleted] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [toastId, setToastId] = useState("1");
   const [isLoading, setIsLoading] = useState(true);
 
   const configId =
@@ -119,9 +120,6 @@ export default function ClientComponent({
   //     </div>
   //   );
   // }
-  useEffect(() => {
-    console.log("Hydrated title:", title);
-  }, [title]);
 
   return (
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20  ">
@@ -227,7 +225,11 @@ export default function ClientComponent({
           gender={gender}
           AIGender={AIGender}
         />
-        <Controls setShowBox={setShowBox} setAlert={setAlert} />
+        <Controls
+          setShowBox={setShowBox}
+          setAlert={setAlert}
+          toastId={toastId}
+        />
         {/* {
           // name && email &&
 
@@ -235,6 +237,7 @@ export default function ClientComponent({
            
           )
         } */}
+
         {
           // name && email &&
 
@@ -259,6 +262,7 @@ export default function ClientComponent({
                   age={age}
                   setShowBox={setShowBox}
                   setAlert={setAlert}
+                  setToastId={setToastId}
                 />
               </div>
             ))

@@ -7,8 +7,9 @@ import { cn } from "../lib/utils";
 import React, { useState } from "react";
 import { Toggle } from "./ui/toggle";
 import MicFFT from "./MicFFT";
+import { toast } from "sonner";
 
-export default function Controls({ setShowBox, setAlert }: any) {
+export default function Controls({ setShowBox, setAlert, toastId }: any) {
   const { disconnect, status, isMuted, unmute, mute, micFft } = useVoice();
 
   return (
@@ -59,7 +60,7 @@ export default function Controls({ setShowBox, setAlert }: any) {
               className={"flex items-center gap-1"}
               onClick={() => {
                 disconnect();
-
+                toast.dismiss(toastId);
                 setShowBox(true);
                 setAlert(true);
               }}
