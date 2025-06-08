@@ -93,16 +93,18 @@ export default function StartCall({
           }}
         >
           <Button
-            className=" z-50 flex flex-col items-center justify-center h-20  shadow-lg hover:opacity-80"
+            className=" z-50 flex flex-col items-center justify-center h-20  shadow-lg  bg-gradient-to-r from-transparent to-white/20 dark:from-gray-200 dark:to-gray-400 hover:opacity-80"
             onClick={() => {
               setShowBox(false);
               setAlert(false);
               const toastId = toast.success(() => (
                 <div className="w-full p-2" style={{ lineHeight: 1.4 }}>
-                  <h2 className="font-semibold text-base mb-1 text-gray-900">
+                  <h2 className="font-semibold text-base mb-1 text-gray-900 dark:text-white">
                     {title}
                   </h2>
-                  <span className="text-sm text-gray-700">{description}</span>
+                  <span className="text-sm text-gray-700 dark:text-white">
+                    {description}
+                  </span>
                 </div>
               ));
 

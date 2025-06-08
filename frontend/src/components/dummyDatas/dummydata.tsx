@@ -1,5 +1,11 @@
 import React from "react";
-import { FaHeartbeat, FaCoffee, FaAd, FaSlideshare } from "react-icons/fa";
+import {
+  FaHeartbeat,
+  FaCoffee,
+  FaAd,
+  FaSlideshare,
+  FaFastForward,
+} from "react-icons/fa";
 import { FaPerson, FaPizzaSlice } from "react-icons/fa6";
 
 // Dummy data
@@ -18,7 +24,7 @@ const dummydata = [
     title: "Barista",
     heading: "Barista",
     icon: <FaCoffee />,
-    color: "text-red-900",
+    color: "text-red-700",
     girl_name: "Sangita",
     boy_name: "Suman",
     description: "Turn small talk into meaningful exchanges with café staff.",
@@ -27,7 +33,7 @@ const dummydata = [
     title: "Approaching_stranger",
     heading: "Approaching Someone New",
     icon: <FaPerson />,
-    color: "text-blue-600",
+    color: "text-cyan-800",
     boy_name: "Abhishek",
     girl_name: "Simran",
     description:
@@ -47,22 +53,21 @@ const dummydata = [
     title: "Event_meetup",
     heading: "Event / meetup",
     icon: <FaPizzaSlice />,
-    color: "text-blue-900",
+    color: "text-blue-500",
     boy_name: "Prakash",
     girl_name: "Amy",
     description:
       "Manage social nerves and keep conversations flowing naturally at events.",
   },
-  // {
-  //   title: "Speed_dating",
-  //   heading: "Speed Dating",
-  //   icon: <FaPizzaSlice />,
-  //   color: "text-blue-900",
-  //   boy_name: "Prakash",
-  //   girl_name: "Amy",
-  //   description:
-  //     "Manage social nerves and keep conversations flowing naturally at events.",
-  // },
+  {
+    title: "Speed_dating",
+    heading: "Speed Dating",
+    icon: <FaFastForward />,
+    color: "text-green-600",
+    boy_name: "Prakash",
+    girl_name: "Amy",
+    description: "Practice Speed Dating with multiple dates at a time.",
+  },
 ];
 
 export default dummydata;

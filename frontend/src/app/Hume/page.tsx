@@ -14,7 +14,11 @@ export default async function HumePage() {
   }
 
   return (
-    <div className={"grow flex flex-col"}>
+    <div
+      className={
+        "grow flex flex-col bg-gradient-to-t dark:from-gray-800 dark:to-gray-900"
+      }
+    >
       <Chat accessToken={accessToken} />
     </div>
   );
