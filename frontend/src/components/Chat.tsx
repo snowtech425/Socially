@@ -58,6 +58,10 @@ export default function ClientComponent({
       male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_APPROACHINGSTRANGER,
       female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_APPROACHINGSTRANGER,
     },
+    speed_dating: {
+      male: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_MALE_SPEEDDATING,
+      female: process.env.NEXT_PUBLIC_HUME_CONFIG_ID_FEMALE_SPEEDDATING,
+    },
   };
 
   // State for user input
@@ -125,7 +129,7 @@ export default function ClientComponent({
     <div className="relative grow flex flex-col gap-y-10 mx-auto w-full h-[78vh] md:h-[85vh] z-20  ">
       {/* Name, Email, Age, and Gender Section */}
       {showBox && !proceed && (
-        <div className="mt-4 p-2 md:p-6 xl:p-3 2xl:p-6 border rounded-md bg-[#E2EAFF] dark:bg-background z-30 h-auto  xl:h-auto 2xl:h-auto xl:w-6/12 w-[95%] md:w-1/2 2xl:w-1/3 m-auto shadow-lg shadow-[#cfdcff] dark:shadow-none transition-all duration-300">
+        <div className="mt-4 p-2 md:p-6 xl:p-3 2xl:p-6 border rounded-md bg-[#E2EAFF] dark:bg-transparent z-30 h-auto  xl:h-auto 2xl:h-auto xl:w-6/12 w-[95%] md:w-1/2 2xl:w-1/3 m-auto shadow-lg shadow-[#cfdcff] dark:shadow-none transition-all duration-300">
           <div className="flex flex-col gap-2 md:gap-6 xl:gap-y-4 2xl:gap-y-6">
             {/* <div className="flex flex-col xl:flex-row 2xl:flex-col xl:justify-between xl:w-6/6 gap-y-2 xl:gap-y-0 2xl:gap-y-6">
               <input
@@ -150,7 +154,7 @@ export default function ClientComponent({
               required={false}
               value={age || ""}
               onChange={handleAgeChange}
-              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-1 md:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-transparent"
               placeholder="Enter your age (Optional)"
               min="0"
             />
@@ -160,7 +164,7 @@ export default function ClientComponent({
                 <SelectTrigger className="w-full  md:w-3/6">
                   <SelectValue placeholder="How should we refer to you?" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-gradient-to-r dark:from-gray-800 dark:to-gray-900">
                   <SelectGroup>
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>
@@ -172,7 +176,7 @@ export default function ClientComponent({
                 <SelectTrigger className="w-full md:w-3/6">
                   <SelectValue placeholder="How should the AI sound" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-gradient-to-r dark:from-gray-800 dark:to-gray-900">
                   <SelectGroup>
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>

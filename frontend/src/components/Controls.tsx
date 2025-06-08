@@ -34,7 +34,7 @@ export default function Controls({ setShowBox, setAlert, toastId }: any) {
               opacity: 0,
             }}
             className={
-              "p-4 bg-gray-200 border border-border rounded-lg shadow-sm flex items-center gap-4"
+              "p-4 bg-transparent/10 border border-border rounded-lg shadow-sm flex items-center gap-4"
             }
           >
             <Toggle

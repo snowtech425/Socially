@@ -8,7 +8,7 @@ import ScienceAndPractice from "./Practices/page";
 
 export default async function Home() {
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:from-gray-800 dark:to-gray-900">
       {/* Hero Section */}
       <section className="bg-gradient-to-t from-[rgba(226,234,255,0)] to-[#E2EAFF] dark:from-gray-800 dark:to-gray-900">
         <Hero />

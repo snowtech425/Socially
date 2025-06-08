@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className=" h-20 relative">
+    <footer className=" h-20 relative bg-gradient-to-b dark:from-gray-800 dark:to-gray-900">
       <MaxWidthWrapper>
         <div className="border-t border-gray-200" />
         <div className="h-full flex flex-col md:flex-row md:justify-between justify-center items-center">
