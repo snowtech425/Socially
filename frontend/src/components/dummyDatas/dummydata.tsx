@@ -53,6 +53,16 @@ const dummydata = [
     description:
       "Manage social nerves and keep conversations flowing naturally at events.",
   },
+  // {
+  //   title: "Speed_dating",
+  //   heading: "Speed Dating",
+  //   icon: <FaPizzaSlice />,
+  //   color: "text-blue-900",
+  //   boy_name: "Prakash",
+  //   girl_name: "Amy",
+  //   description:
+  //     "Manage social nerves and keep conversations flowing naturally at events.",
+  // },
 ];
 
 export default dummydata;

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import SessionAuthProvider from "./api/auth/[...nextauth]/sessionProvider";
 import { ReduxProvider } from "@/store/provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,12 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <Navbar />
+              <Toaster
+                position="top-center"
+                className="!top-[30vh]"
+                closeButton
+                richColors
+              />
               {children}
               <Footer />
             </ThemeProvider>
