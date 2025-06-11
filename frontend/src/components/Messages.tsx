@@ -29,11 +29,13 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
     const matchedData = dummydata.find((item) => item.title === title);
 
     // Use the matched data or fallback to default values
-    const name = matchedData
-      ? AIGender === "male"
-        ? matchedData.boy_name
-        : matchedData.girl_name
-      : "AI Assistant";
+    // const name = matchedData
+    //   ? AIGender === "male"
+    //     ? matchedData.boy_name
+    //     : matchedData.girl_name
+    //   : "AI Assistant";
+
+    const name = "AI Assistant";
     const icon = matchedData ? matchedData.icon : <FaRobot />; // Default icon if no match
 
     // Log the readyState to monitor the connection status
@@ -64,7 +66,7 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
           className={"max-w-2xl mx-auto w-full flex flex-col gap-4 pb-24"}
         >
           <AnimatePresence mode="popLayout">
-            {messages.map((msg, index) => {
+            {messages.map((msg: any, index: number) => {
               if (
                 msg.type === "user_message" ||
                 msg.type === "assistant_message"
@@ -110,10 +112,11 @@ const Messages = forwardRef<ComponentRef<typeof motion.div>, MessagesProps>(
                         )}
                       </span>
                     </div>
-                    <div className="text-sm text-gray-800">
+                    <hr />
+                    <div className="text-sm text-gray-800 mt-1">
                       {msg.message.content}
                     </div>
-                    <Expressions values={{ ...msg.models.prosody?.scores }} />
+                    {/* <Expressions values={{ ...msg.models.prosody?.scores }} /> */}
                   </motion.div>
                 );
               }
